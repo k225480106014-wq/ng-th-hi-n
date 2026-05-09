@@ -10,8 +10,8 @@ Lớp: 58KTPM
 # SỬ DỤNG DJANGO ĐỂ TẠO WEB QUẢN LÝ TIỆM CẦM ĐỒ
 ## deadline : 23h59 ngày 09 tháng 5 năm 2026.
 1.TỔ CHỨC CSDL CHO HỆ THỐNG QUẢN LÝ TIỆM CẦM ĐỒ: viết tay ra giấy, lấy điện thoại chụp lại, upload ảnh lên github (đã nói về các nghiệp vụ trên lớp, ghi bảng)
-1.	 
-   
+<img width="778" height="910" alt="image" src="https://github.com/user-attachments/assets/03895596-b71e-4ca1-8fab-830d2f637c72" />
+
 2. SỬ DỤNG DOCKER TRÊN UBUNTU ĐỂ: 
 •	Cài đặt Ubuntu + Docker Trong Ubuntu chạy: sudo apt update sudo apt install docker.io docker-compose -y
  
