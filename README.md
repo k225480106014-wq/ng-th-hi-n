@@ -129,30 +129,9 @@ o	docker compose up -d --build
 
 
 
-   
-
-
-
-
-
-
-
 
 
  
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
