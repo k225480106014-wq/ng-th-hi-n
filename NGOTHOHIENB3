@@ -1,0 +1,117 @@
+Bài tập 03 - Sử dụng WordPress để tạo Website
+Môn: Phát triển ứng dụng với mã nguồn mở - TEE0421
+Lớp: 58KTPM
+Sinh viên: Ngô Thị Hiền- K225480106014
+Yêu cầu bài tập
+Sử dụng Docker trên Ubuntu để triển khai các service:
+
+MariaDB
+phpMyAdmin
+WordPress
+Sau đó:
+
+Public website bằng Cloudflare Tunnel
+Tạo bài viết giới thiệu bản thân
+Tạo bài viết giới thiệu ngành học yêu thích tại TNUT
+Nhận xét việc sử dụng WordPress
+1. Thiết lập cấu trúc thư mục và Docker Compose
+Đầu tiên, hãy tạo không gian làm việc để quản lý các file cấu hình.
+
+# Tạo thư mục dự án
+mkdir wordpress-lab && cd wordpress-lab
+
+# Tạo file docker-compose.yml
+nano docker-compose.yml
+Nội dung file docker-compose.yml:
+Bạn dán đoạn mã dưới đây vào file:
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password_123
+      MYSQL_DATABASE: wp_database
+      MYSQL_USER: wp_admin
+      MYSQL_PASSWORD: wp_password_123
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin_tool
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mariadb
+      MYSQL_ROOT_PASSWORD: root_password_123
+    depends_on:
+      - mariadb
+
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress_site
+    restart: always
+    ports:
+      - "8000:80"
+    environment:
+      WORDPRESS_DB_HOST: mariadb
+      WORDPRESS_DB_USER: wp_admin
+      WORDPRESS_DB_PASSWORD: wp_password_123
+      WORDPRESS_DB_NAME: wp_database
+    depends_on:
+      - mariadb
+    volumes:
+      - wp_data:/var/www/html
+
+volumes:
+  db_data:
+  wp_data:
+
+
+
+
+2. Các bước triển khai hệ thống
+Bước 1: Khởi chạy Container
+Sử dụng lệnh sau để tải image và chạy các service ngầm:
+docker compose up -d
+Bước 2: Kiểm tra Database qua phpMyAdmin
+1. Truy cập: http://192.168/1.16:8081
+ Đăng nhập:
+. usr:root bằng tài khoản root và mật khẩu đã thiết lập ở trên.
+.password:root123
+2. Kiểm tra xem CSDLC wp-database đã tồn tại chưa (WordPress sẽ tự tạo bảng khi cài đặt xong).
+ảnh database WordPress và các bản wp-
+
+Bước 3: Cấu hình WordPress
+1. Truy cập: http:http://192.168/1.16:8000
+2. Chọn ngôn ngữ, thiết lập tài khoản Admin cho website.
+chèn ảnh 
+3. Public Website qua Cloudflare Tunnel
+Để đưa web lên một sub-domain (ví dụ: lab.yourdomain.com), hãy thực hiện:
+1. Cài đặt cloudflared
+curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared.deb
+sudo dpkg -i cloudflared.deb
+2. Xác thực: cloudflared tunnel login (Click vào link hiện ra để chọn tên miền).
+3.Tạo Tunnel: cloudflared tunnel create wp-tunnel.
+4.Trỏ DNS & Chạy: * Trỏ DNS: cloudflared tunnel route dns wp-tunnel lab.yourdomain.com
+. Chạy tunnel kết nối tới port 8000:
+cloudflared tunnel run --url http://localhost:8000 wp-tunnel
+chèn ảnh 
+4. Nội dung bài viết 
+• Bài viết 1 - Giới thiệu bản thân: Sử dụng Block "Media & Text" để ảnh thẻ/ảnh cá nhân bên cạnh thông tin
+
+• Bài viết 2 - Ngành học tại TNUT: 
+. giới thiệu về ngành học : ngành kỹ thuật phần mềm tại trường Đại Học Kĩ Thuật Công Nghiệp (TNUT)
+Hình ảnh dưới đây minh họa quá trình soạn thảo bài giới thiệu bản thân thông qua Localhost:
+chèn ảnh 
+5. Nhận xét về WordPress & Docker
+• Độ tiện dụng: WordPress cung cấp kho giao diện khổng lồ, giúp tạo web chuyên nghiệp mà không cần code. Docker giúp đóng gói mọi thứ, tránh lỗi "chạy được trên máy em nhưng không chạy được trên máy thầy".
+• Tài nguyên: * RAM: Hệ thống này ngốn khoảng 400MB - 600MB RAM khi ở trạng thái nghỉ.
+• CPU: Rất thấp, trừ khi website có lượng truy cập lớn hoặc xử lý ảnh nặng.
+• Khó khăn: Việc cấu hình SSL và kết nối Tunnel đôi khi gặp lỗi về port hoặc quyền ghi (permission) trên các thư mục volumes của Linux.
+
+
