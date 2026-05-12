@@ -2,6 +2,7 @@ Bài tập 03 - Sử dụng WordPress để tạo Website
 Môn: Phát triển ứng dụng với mã nguồn mở - TEE0421
 Lớp: 58KTPM
 Sinh viên: Ngô Thị Hiền- K225480106014
+
 Yêu cầu bài tập
 Sử dụng Docker trên Ubuntu để triển khai các service:
 
@@ -23,55 +24,47 @@ mkdir wordpress-lab && cd wordpress-lab
 # Tạo file docker-compose.yml
 nano docker-compose.yml
 Nội dung file docker-compose.yml:
-Bạn dán đoạn mã dưới đây vào file:
-version: '3.8'
 
 services:
+
   mariadb:
     image: mariadb:latest
-    container_name: mariadb_db
+    container_name: mariadb
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root_password_123
-      MYSQL_DATABASE: wp_database
-      MYSQL_USER: wp_admin
-      MYSQL_PASSWORD: wp_password_123
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: wp123
     volumes:
-      - db_data:/var/lib/mysql
+      - mariadb_data:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin:latest
-    container_name: phpmyadmin_tool
+    container_name: phpmyadmin
     restart: always
     ports:
       - "8081:80"
     environment:
       PMA_HOST: mariadb
-      MYSQL_ROOT_PASSWORD: root_password_123
-    depends_on:
-      - mariadb
+      MYSQL_ROOT_PASSWORD: root123
 
   wordpress:
     image: wordpress:latest
-    container_name: wordpress_site
+    container_name: wordpress
     restart: always
     ports:
-      - "8000:80"
+      - "8001:80"
     environment:
-      WORDPRESS_DB_HOST: mariadb
-      WORDPRESS_DB_USER: wp_admin
-      WORDPRESS_DB_PASSWORD: wp_password_123
-      WORDPRESS_DB_NAME: wp_database
+      WORDPRESS_DB_HOST: mariadb:3306
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: wp123
+      WORDPRESS_DB_NAME: wordpress
     depends_on:
       - mariadb
-    volumes:
-      - wp_data:/var/www/html
 
 volumes:
-  db_data:
-  wp_data:
-
-
+  mariadb_data:
 
 
 2. Các bước triển khai hệ thống
@@ -92,7 +85,7 @@ Bước 2: Kiểm tra Database qua phpMyAdmin
 Bước 3: Cấu hình WordPress
 1. Truy cập: http:http://192.168/1.16:8000
 2. Chọn ngôn ngữ, thiết lập tài khoản Admin cho website.
-chèn ảnh 
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/c5ad3812-730e-47e2-ad12-d53d429b867f" />
 3. Public Website qua Cloudflare Tunnel
 Để đưa web lên một sub-domain (ví dụ: lab.yourdomain.com), hãy thực hiện:
 1. Cài đặt cloudflared
@@ -103,7 +96,7 @@ sudo dpkg -i cloudflared.deb
 4.Trỏ DNS & Chạy: * Trỏ DNS: cloudflared tunnel route dns wp-tunnel lab.yourdomain.com
 . Chạy tunnel kết nối tới port 8000:
 cloudflared tunnel run --url http://localhost:8000 wp-tunnel
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/c5ad3812-730e-47e2-ad12-d53d429b867f" />
+
 
 4. Nội dung bài viết 
 • Bài viết 1 - Giới thiệu bản thân: Sử dụng Block "Media & Text" để ảnh thẻ/ảnh cá nhân bên cạnh thông tin
