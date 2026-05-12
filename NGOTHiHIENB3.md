@@ -86,7 +86,8 @@ Bước 2: Kiểm tra Database qua phpMyAdmin
 Bước 3: Cấu hình WordPress
 1. Truy cập: http:http://192.168/1.16:8000
 2. Chọn ngôn ngữ, thiết lập tài khoản Admin cho website.
-<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/c5ad3812-730e-47e2-ad12-d53d429b867f" />
+<img width="1213" height="600" alt="image" src="https://github.com/user-attachments/assets/3d750262-fb7a-4564-bedd-5d084b1ac232" />
+
 3. Public Website qua Cloudflare Tunnel
 Để đưa web lên một sub-domain (ví dụ: lab.yourdomain.com), hãy thực hiện:
 1. Cài đặt cloudflared
