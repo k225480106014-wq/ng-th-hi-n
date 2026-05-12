@@ -65,6 +65,7 @@ services:
 
 volumes:
   mariadb_data:
+<img width="1171" height="665" alt="image" src="https://github.com/user-attachments/assets/5e3bf75a-5021-407e-8342-745e574cd8bb" />
 
 
 2. Các bước triển khai hệ thống
