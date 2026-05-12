@@ -103,11 +103,11 @@ cloudflared tunnel run --url http://localhost:8000 wp-tunnel
 chèn ảnh 
 4. Nội dung bài viết 
 • Bài viết 1 - Giới thiệu bản thân: Sử dụng Block "Media & Text" để ảnh thẻ/ảnh cá nhân bên cạnh thông tin
-![](https://github.com/k225480106014-wq/my--profile-/blob/main/z7817806521784_0575bd03b1a8e75f8145e25acb893d24%20(1).jpg)
+![https://github.com/k225480106014-wq/my--profile-/blob/main/[(z7817806521784_0575bd03b1a8e75f8145e25acb893d24%20(1).jpg)
 • Bài viết 2 - Ngành học tại TNUT: 
 . giới thiệu về ngành học : ngành kỹ thuật phần mềm tại trường Đại Học Kĩ Thuật Công Nghiệp (TNUT)
 Hình ảnh dưới đây minh họa quá trình soạn thảo bài giới thiệu bản thân thông qua Localhost:
-  ![](https://github.com/k225480106014-wq/my--profile-/blob/main/Screenshot%202026-05-12%20152013.png)
+  ![https://github.com/k225480106014-wq/my--profile-/blob/main/](Screenshot%202026-05-12%20152013.png)
 5. Nhận xét về WordPress & Docker
 • Độ tiện dụng: WordPress cung cấp kho giao diện khổng lồ, giúp tạo web chuyên nghiệp mà không cần code. Docker giúp đóng gói mọi thứ, tránh lỗi "chạy được trên máy em nhưng không chạy được trên máy thầy".
 • Tài nguyên: * RAM: Hệ thống này ngốn khoảng 400MB - 600MB RAM khi ở trạng thái nghỉ.
