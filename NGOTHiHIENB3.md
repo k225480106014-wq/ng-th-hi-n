@@ -78,6 +78,8 @@ volumes:
 Bước 1: Khởi chạy Container
 Sử dụng lệnh sau để tải image và chạy các service ngầm:
 docker compose up -d
+<img width="1362" height="408" alt="image" src="https://github.com/user-attachments/assets/14e8f8be-9d61-4da0-80a5-cdb3f5f326ee" />
+
 Bước 2: Kiểm tra Database qua phpMyAdmin
 1. Truy cập: http://192.168/1.16:8081
  Đăng nhập:
@@ -85,6 +87,7 @@ Bước 2: Kiểm tra Database qua phpMyAdmin
 .password:root123
 2. Kiểm tra xem CSDLC wp-database đã tồn tại chưa (WordPress sẽ tự tạo bảng khi cài đặt xong).
 ảnh database WordPress và các bản wp-
+<img width="1127" height="561" alt="image" src="https://github.com/user-attachments/assets/3edadd6c-5eec-4fc5-910f-40d37f9f65ad" />
 
 Bước 3: Cấu hình WordPress
 1. Truy cập: http:http://192.168/1.16:8000
@@ -100,13 +103,16 @@ sudo dpkg -i cloudflared.deb
 4.Trỏ DNS & Chạy: * Trỏ DNS: cloudflared tunnel route dns wp-tunnel lab.yourdomain.com
 . Chạy tunnel kết nối tới port 8000:
 cloudflared tunnel run --url http://localhost:8000 wp-tunnel
-chèn ảnh 
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/c5ad3812-730e-47e2-ad12-d53d429b867f" />
+
 4. Nội dung bài viết 
 • Bài viết 1 - Giới thiệu bản thân: Sử dụng Block "Media & Text" để ảnh thẻ/ảnh cá nhân bên cạnh thông tin
-![https://github.com/k225480106014-wq/my--profile-/blob/main/](z7817806521784_0575bd03b1a8e75f8145e25acb893d24%20(1).jpg)
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/c09ba999-e915-4685-af9f-a40ad95345f1" />
+
 • Bài viết 2 - Ngành học tại TNUT: 
 . giới thiệu về ngành học : ngành kỹ thuật phần mềm tại trường Đại Học Kĩ Thuật Công Nghiệp (TNUT)
 Hình ảnh dưới đây minh họa quá trình soạn thảo bài giới thiệu bản thân thông qua Localhost:
+<img width="1919" height="943" alt="image" src="https://github.com/user-attachments/assets/2f9d5b7c-4b0d-481f-bd51-2b6ddbfee324" />
 
 5. Nhận xét về WordPress & Docker
 • Độ tiện dụng: WordPress cung cấp kho giao diện khổng lồ, giúp tạo web chuyên nghiệp mà không cần code. Docker giúp đóng gói mọi thứ, tránh lỗi "chạy được trên máy em nhưng không chạy được trên máy thầy".
