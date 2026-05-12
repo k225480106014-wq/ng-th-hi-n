@@ -7,7 +7,6 @@ Tên miền đã đăng kí thành công: vva11004.id.vn
 <img width="1919" height="863" alt="image" src="https://github.com/user-attachments/assets/12c4a353-b796-4deb-a803-f13d1afa3728" />
 
 Đăng kí tài khoản cloudflare
-
 Truy cập trang đăng kí bằng đường dẫn: https://dash.cloudflare.com/login
 Sau khi truy cập vào rồi có 3 tuỳ chọn đăng nhập hoặc đăng kí
 Ở đây ta chọn đăng nhập bằng tài khoản Github
